@@ -1,0 +1,61 @@
+<database name="default" defaultIdMethod="native" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://xsd.propelorm.org/1.6/database.xsd" namespace="pelis">
+    <table name="pelicula" phpName="Pelicula">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
+        <column name="titulo" type="varchar" size="150" required="true" />
+        <column name="ano" type="date" required="true" />
+        <column name="sinopsis" type="LONGVARCHAR" required="true" />
+        <column name="trailer" type="varchar" size="250" />
+    </table>
+
+    <table name="genero" phpName="Genero">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
+        <column name="nombre" type="varchar" size="200" required="true" />
+    </table>
+
+    <table name="productor" phpName="Productor">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
+        <column name="nombre" type="varchar" size="200" required="true" />
+    </table>
+
+    <table name="actor" phpName="Actor">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
+        <column name="nombre" type="varchar" size="200" required="true" />
+        <column name="apellido" type="varchar" size="200" required="true" />
+        <column name="edad" type="integer" required="true" />
+    </table>
+
+    <table name="pelicula_genero" isCrossREF="true">
+        <column name="pelicula_id" type="integer" primaryKey="true" />
+        <column name="genero_id" type="integer" primaryKey="true" />
+        <foreign-key foreignTable="pelicula">
+            <reference local="pelicula_id" foreign="id" />
+        </foreign-key>
+        <foreign-key foreignTable="genero">
+            <reference local="genero_id" foreign="id" />
+        </foreign-key>
+    </table>
+
+    <table name="pelicula_productor" isCrossREF="true">
+        <column name="pelicula_id" type="integer" primaryKey="true" />
+        <column name="productor_id" type="integer" primaryKey="true" />
+        <foreign-key foreignTable="pelicula">
+            <reference local="pelicula_id" foreign="id" />
+        </foreign-key>
+        <foreign-key foreignTable="productor">
+            <reference local="productor_id" foreign="id" />
+        </foreign-key>
+    </table>
+
+    <table name="pelicula_actor" isCrossREF="true">
+        <column name="pelicula_id" type="integer" primaryKey="true" />
+        <column name="actor_id" type="integer" primaryKey="true" />
+        <foreign-key foreignTable="pelicula">
+            <reference local="pelicula_id" foreign="id" />
+        </foreign-key>
+        <foreign-key foreignTable="actor">
+            <reference local="actor_id" foreign="id" />
+        </foreign-key>
+    </table>
+
+</database>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<config>
+    <propel>
+        <database>
+            <connections>
+                <connection id="default">
+                    <adapter>mysql</adapter>
+                    <dsn>mysql:host=localhost;port=3306;dbname=pelis</dsn>
+                    <user>root</user>
+                    <password></password>
+                    <settings>
+                        <charset>utf8</charset>
+                         <!--<setting id="queries">
+                            <query>INSERT INTO genero VALUES (1,'Accion'),(2,'Ciencia Ficcion'),(3,'Comedia'),(4,'Drama'),(5,'Fantasia'),(6,'Melodrama'),(7,'Musical'),(8,'Romance'),(9,'Suspense'),(10,'Terror');</query>
+                         </setting>-->
+                    </settings>
+                </connection>
+            </connections>
+        </database>
+    </propel>
+</config>

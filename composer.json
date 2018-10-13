@@ -1,0 +1,18 @@
+{
+    "name": "pruebas/pelis",
+    "description": "Prueba de uso de orm mas slim para hacer una demo estilo imdb",
+    "type": "project",
+    "require": {
+        "slim/slim-skeleton": "^3.1",
+        "propel/propel": "~2.0@dev",
+        "monolog/monolog": "^1.23"
+    },"autoload": {
+        "classmap": ["pelis/"]
+    },
+    "authors": [
+        {
+            "name": "David Jurado",
+            "email": "daragonar@hotmail.com"
+        }
+    ]
+}
