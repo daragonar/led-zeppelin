@@ -1,0 +1,7 @@
+{
+  "name": "pelisIonic",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

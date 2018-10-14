@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let genero of generos" (click)="itemTapped($event, genero)">
+      
+      <div class="item-note">
+        {{genero.Nombre}}
+      </div>
+    </button>
+  </ion-list>
+  <div *ngIf="selectedItem" padding>
+    <input type="text" value="{{selectedItem.Nombre}}">
+  </div>
+</ion-content>
