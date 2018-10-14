@@ -21,7 +21,16 @@ class controllerGenero
         $response = json_decode($json);
         return $response;
     }
-
+    
+    function deleteGenero($id)
+    { 
+        //optimizada   return json_decode(file_get_contents('http://api.geonames.org/citiesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&lang=de&username=demo'),true);;
+        $service = $this->cadcon . '/generodel/' . $id;
+        $json = file_get_contents($service);
+        $response = json_decode($json);
+        return $response;
+    }
+    
     function updateGenero($id, $post)
     { 
         //optimizada   return json_decode(file_get_contents('http://api.geonames.org/citiesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&lang=de&username=demo'),true);;
@@ -33,7 +42,7 @@ class controllerGenero
         $output = curl_exec($ch);
         $info = curl_getinfo($ch);
         curl_close($ch);
-        echo $output;
+        return $info;
     }
 
     function nuevoGenero( $post)

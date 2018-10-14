@@ -11,6 +11,16 @@ $q = new GeneroQuery();
 //$genero->setNombre();
 $app = new \Slim\App;
 
+// Configuración de cabeceras
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Allow: GET, POST, OPTIONS, PUT, DELETE");
+$method = $_SERVER['REQUEST_METHOD'];
+if($method == "OPTIONS") {
+    die();
+}
+
 $app->get('/hello/{name}', function (Request $request, Response $response, array $args) use ($app) {
     $name = $args['name'];
     $response->getBody()->write("Hello, $name");
@@ -28,11 +38,19 @@ $app->get('/genero/{id}', function (Request $request, Response $response, array 
     $genero = $q->findPK($id)->toJSON();
     return $genero;
 });
+//borrar un genero
+$app->get('/generodel/{id}', function (Request $request, Response $response, array $args) use ($app, $q) {
+    $id = $args['id'];
+    $genero = $q->findPK($id);
+    $genero->delete();
+    return $genero->isDeleted();
+});
+
 //actualizar genero
 $app->post('/generoup/{id}', function (Request $request, Response $response, array $args) use ($app, $q) {
     $id = $args['id'];
     $data=$request->getParsedBody();
-    $genero = $q->findPK($id);
+    $genero = $q->findP($id);
     $genero->setNombre($data['genero']);
     $genero->save();
     return $genero;
@@ -43,7 +61,6 @@ $app->post('/generocre', function (Request $request, Response $response, array $
     $genero = new Genero();
     $genero->setNombre($data['genero']);
     $genero->save();
-    var_dump($genero);
     return $genero;
 });
 $app->run();
