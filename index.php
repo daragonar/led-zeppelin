@@ -5,8 +5,8 @@ require_once './vendor/autoload.php';
 // setup Propel
 require_once './generated-conf/config.php';
 
-include './controllador/controllerPelicula.php';
-include './controllador/controllerGeneros.php';
+//include './controllador/controllerPelicula.php';
+//include './controllador/controllerGeneros.php';
 
 $controGeneros = new controllerGenero();
 
@@ -15,8 +15,9 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
 } else {
     $page = "";
 };
-include_once("./views/header.php");
+//include_once("./views/header.php");
 
+$header = new header();
 switch ($page) {
     case 'actores':
         include("./views/actores.php");
@@ -28,17 +29,9 @@ switch ($page) {
         include("./views/productores.php");
         break;
     case 'generos':
-        include("./views/generos.php");
-        break;
     case 'gen':
-        include("./views/generos.php");
-        break;
     case 'genup':
-        include("./views/generos.php");
-        break;
     case 'gennew':
-        include("./views/generos.php");
-        break;
     case 'gendel':
         include("./views/generos.php");
         break;
@@ -47,4 +40,6 @@ switch ($page) {
         break;
 }
 
-include_once("./views/footer.php");
+//include_once("./views/footer.php");
+
+$footer = new footer();

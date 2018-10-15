@@ -1,4 +1,9 @@
-
+<?php
+class header
+{
+    function __construct()
+    {
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -46,4 +51,7 @@
     </nav>
     
 
-       
+     <?php
+}
+}
+?>  

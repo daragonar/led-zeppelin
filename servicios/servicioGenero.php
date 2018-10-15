@@ -32,6 +32,12 @@ $app->get('/generos', function () use ($app, $q) {
     $generos = $q->find()->toJSON();
     return $generos;
 });
+//recuperar los ultimos n
+$app->get('/generos/{total}', function (Request $request, Response $response, array $args) use ($app, $q) {
+    $total=$args['total'];
+    $generos = $q->limit($total)->orderById('desc')->find()->toJSON();
+    return $generos;
+});
 //ver un genero
 $app->get('/genero/{id}', function (Request $request, Response $response, array $args) use ($app, $q) {
     $id = $args['id'];

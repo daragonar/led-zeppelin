@@ -7,7 +7,7 @@
         "propel/propel": "~2.0@dev",
         "monolog/monolog": "^1.23"
     },"autoload": {
-        "classmap": ["pelis/"]
+        "classmap": ["pelis/","controllador/","views/"]
     },
     "authors": [
         {

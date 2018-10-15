@@ -12,7 +12,14 @@ class controllerGenero
         $response = json_decode($json);
         return $response;
     }
-
+    function getGenerosUltimo($total)
+    { 
+        //optimizada   return json_decode(file_get_contents('http://api.geonames.org/citiesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&lang=de&username=demo'),true);;
+        $service = $this->cadcon . "/generos/".$total;
+        $json = file_get_contents($service);
+        $response = json_decode($json);
+        return $response;
+    }
     function getGenero($id)
     { 
         //optimizada   return json_decode(file_get_contents('http://api.geonames.org/citiesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&lang=de&username=demo'),true);;
